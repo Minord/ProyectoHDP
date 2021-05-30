@@ -38,7 +38,6 @@ class Account(models.Model):
     #Esta configurado en cascada cuando se borra el usuario
     #esta se barra tambien
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
     rol = models.TextField(max_length=500, blank=True)
     phone = models.CharField(max_length=30, blank=True)
     register_code = models.CharField(max_length=30, blank=True)
@@ -65,11 +64,11 @@ En este caso el codigo de autorizacion puede ser creado por cualquier administra
 El codigo tiene que diferenciar el tipo de cuenta que puede crear.
 """
 class AuthCode(models.Model):
-    CATEGORY = (('Operator', 'Operator'),
-                ('Administrator', 'Administrator'),
-                ('Client', 'Client')) 
+    CATEGORY = (('worker', 'worker'),
+                ('administrator', 'administrator'),
+                ('client', 'client')) 
 
-    code = models.CharField(max_length=6, null=False)
+    code = models.CharField(max_length=12, null=False)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
     date_created = models.DateTimeField(auto_now_add = False)
     date_expired = models.DateTimeField(auto_now_add = False)

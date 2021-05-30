@@ -11,5 +11,9 @@
             {{ account_form.as_p }}
             <button type="submit">Registrarse</button>
         </form>
+
+        {% for message in messages %}
+					<p id="messages">{{message}}</p>
+		{% endfor %}
     </body>
 </html>

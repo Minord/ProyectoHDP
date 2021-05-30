@@ -6,7 +6,25 @@
     </header>
     <body>
         <h1>Sistema de Login</h1>
-        <p>Usuario: </p>
-        <p>Contraseña: </p>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p> 
+                <label>Usuario</label>
+                <input type="text" name="username" placeholder="Username...">
+            </p>
+            <p> 
+                <label>Contraseña</label>
+                <input type="password" name="password">
+            </p>
+            <input type="submit" value="login">
+        </form>
+
+        {% for message in messages %}
+					<p id="messages">{{message}}</p>
+		{% endfor %}	
+
+        <a href="{% url 'register' %}">registrarse</a> <br>
+
     </body>
 </html>

@@ -4,8 +4,20 @@
         <title>Create code for Account creation</title>
     </head>
     <body>
-        <h1>Create code for Account creation</h1>
-        <button>Get Code</button>
-        <h1>D4D33E</h1>
+        <h1>Generador de Codigos para creacion de Cuentas</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input list="category" name="category">
+            <datalist id="category">
+                <option value="administrator"> </option>
+                <option value="worker"> </option>
+                <option value="client">  </option>
+            </datalist>
+            <input type="submit" value="Generar Codigo">
+        </form>
+
+        {% for message in messages %}
+					<h2 id="messages">{{message}}</h2>
+		{% endfor %}
     </body>
 </html>
